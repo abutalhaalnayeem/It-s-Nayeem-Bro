@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Cyber Security</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #002455;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #0f0f0e;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 20px 20px 70px #ff0034, -20px -20px 50px #474747;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 25px;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #FF10F0;
+    }
+
+    p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+    #typing {
+      display: inline-block;
+      color: #11ff00;
+    }
+
+    #cursor {
+      display: inline-block;
+      margin-left: 5px;
+      animation: blink .7s infinite;
+      color: #11ff00;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .profile-pic {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      border: 8px solid #333;
+      background-color: #333;
+      position: relative;
+      overflow: hidden;
+      animation: colorful-shadow 1s infinite;
+    }
+
+    @keyframes colorful-shadow {
+      0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5),
+                    0 0 20px rgba(0, 255, 0, 0.5),
+                    0 0 30px rgba(0, 0, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.5),
+                    0 0 40px rgba(0, 255, 0, 0.5),
+                    0 0 60px rgba(0, 0, 255, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5),
+                    0 0 20px rgba(0, 255, 0, 0.5),
+                    0 0 30px rgba(0, 0, 255, 0.5);
+      }
+    }
+
+    .telegram-button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .telegram-icon {
+      color: #00FF00; /* Green color for telegram icon */
+      font-size: 24px;
+      margin-right: 5px;
+    }
+
+    .telegram-button a {
+      display: inline-block;
+      padding: 10px 50px;
+      background-color: #0088cc;
+      border-radius: 25px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0px 0px 15px #ffffff;
+      transition: box-shadow 0.3s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .telegram-button a:hover {
+      box-shadow: 0px 0px 25px #0088cc;
+    }
+
+    .star-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 2px;
+      background-color: rgba(25,270,225,0.5);
+      border-radius: 50%;
+      opacity: 0;
+      animation: rainbow 0.5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      from {
+        transform: translate(0, -50px);
+        opacity: 1;
+      }
+      to {
+        transform: translate(0, calc(100vh + 50px));
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div style="text-align:center;">
+    <img src="https://i.ibb.co/NWVcQjq/IMG-20240226-160139-993.jpg" alt="Head profile picture" class="profile-pic">
+    <!-- 1000 star animations -->
+    <div class="star-container">
+      <!-- Create 1000 star animations using JavaScript -->
+    </div>
+  </div>
+  <div id="profile">
+    <h1>𝙵𝚘𝚞𝚗𝚍𝚎𝚛 𝚊𝚝 𝙳𝚊𝚛𝚔 𝚌𝚢𝚋𝚎𝚛 𝚜𝚎𝚌𝚞𝚛𝚒𝚝𝚢<br>
+      <span id="typing"></span><span id="cursor">_</span></h1>
+  </div>
+  <div class="telegram-button">
+    <a href="https://t.me/Dream_World_Owner" target="_blank">
+      <i class="fab fa-telegram telegram-icon"></i> Message
+    </a>
+  </div>
+  <footer>
+    <p style="text-align: center; color: #ddd;">&copy; 2024 Dark Cyber Security</p>
+  </footer>
+</div>
+<script defer src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script defer>
+  // Create 1000 star animations and append them to the star-container div
+  const starContainer = document.querySelector('.star-container');
+  for (let i = 0; i < 500; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star-animation');
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random()}s`;
+    starContainer.appendChild(star);
+  }
+
+  // Typing animation
+  const words = ["|Student", "|Python programmer", "|Web developer", "|Graphic designer"];
+  const typing = document.getElementById("typing");
+  let currentWordIndex = 0;
+  let currentLetterIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentWord = words[currentWordIndex];
+
+    if (!isDeleting) {
+      typing.innerHTML = currentWord.substring(0, currentLetterIndex + 1);
+      currentLetterIndex++;
+
+      if (currentLetterIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+      } else {
+        setTimeout(type, 100);
+      }
+    } else {
+      typing.innerHTML = currentWord.substring(0, currentLetterIndex - 1);
+      currentLetterIndex--;
+
+      if (currentLetterIndex === 0) {
+        isDeleting = false;
+        currentWordIndex++;
+        if (currentWordIndex === words.length) {
+          currentWordIndex = 0;
+        }
+      }
+
+      setTimeout(type, 100);
+    }
+  }
+
+  type();
+</script>
+</body>
+</html>
